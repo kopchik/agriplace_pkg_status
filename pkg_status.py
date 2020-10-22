@@ -130,15 +130,15 @@ def parse_dependencies(raw_deps):
     return fixed_deps, alternative_deps
 
 
-def _remove_version_info(dep):
-    return re.sub(r"\s\(.+\)", "", dep)
-
-
 def get_package_url(pkg_name):
     if pkg_name not in packages:
         return None
     url = app.url_path_for("view_package_details", pkg_name=pkg_name)
     return url
+
+
+def _remove_version_info(dep):
+    return re.sub(r"\s\(.+\)", "", dep)
 
 
 packages = parse_status_file(path="dpkg_status_example")
